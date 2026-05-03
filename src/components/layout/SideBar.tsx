@@ -1,5 +1,5 @@
 import { NavButton } from '@/components/NavButton';
-import { NAV_ITEMS } from '@/constants/navItems';
+import { NAV_MENU } from '@/configs/menuConfig';
 
 export const SideBar = () => {
   return (
@@ -11,7 +11,7 @@ export const SideBar = () => {
       </div>
 
       <div className="space-y-1">
-        {NAV_ITEMS.map((item) => (
+        {NAV_MENU.map((item) => (
           <NavButton
             key={item.to}
             to={item.to}
