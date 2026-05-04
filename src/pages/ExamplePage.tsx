@@ -7,8 +7,11 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { useTranslation } from 'react-i18next';
 
 export const ExamplePage = () => {
+  const { t } = useTranslation();
+
   return (
     <PagePlaceholder>
       <div className="w-full mx-auto space-y-4">
@@ -16,10 +19,12 @@ export const ExamplePage = () => {
           <CardHeader className="pb-4">
             <div className="flex items-center gap-2.5 mb-1 text-primary">
               <Layers className="h-5 w-5" />
-              <CardTitle className="text-lg font-bold">Example Page</CardTitle>
+              <CardTitle className="text-lg font-bold">
+                {t('example.title')}
+              </CardTitle>
             </div>
             <CardDescription className="text-xs">
-              This is a dummy page to demonstrate the layout expansion.
+              {t('example.subtitle')}
             </CardDescription>
           </CardHeader>
 
@@ -31,7 +36,7 @@ export const ExamplePage = () => {
               >
                 <CheckCircle2 className="h-4 w-4 text-primary opacity-70" />
                 <span className="text-sm text-foreground">
-                  Dummy content item # {i}
+                  {t('example.contentItem', { number: i })}
                 </span>
               </div>
             ))}
@@ -41,8 +46,7 @@ export const ExamplePage = () => {
         <div className="flex items-start gap-3 p-4 rounded-xl bg-primary/5 border border-primary/10">
           <Info className="h-4 w-4 text-primary mt-0.5 shrink-0" />
           <p className="text-xs text-primary/80 leading-relaxed">
-            You can use this page as a starting point for your new features. All
-            components are already styled to match the theme.
+            {t('example.info.text')}
           </p>
         </div>
       </div>

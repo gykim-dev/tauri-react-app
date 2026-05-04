@@ -15,8 +15,11 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage = () => {
+  const { t } = useTranslation();
+
   return (
     <PagePlaceholder>
       <div className="w-full mx-auto space-y-4">
@@ -28,10 +31,10 @@ export const HomePage = () => {
               </div>
               <div className="space-y-1">
                 <CardTitle className="text-lg font-bold text-foreground tracking-tight">
-                  Starter Template
+                  {t('home.title')}
                 </CardTitle>
                 <CardDescription className="text-xs font-medium text-primary/70">
-                  A premium, minimalist boilerplate for your next SaaS.
+                  {t('home.subtitle')}
                 </CardDescription>
               </div>
             </div>
@@ -42,18 +45,18 @@ export const HomePage = () => {
               {[
                 {
                   icon: LayoutTemplate,
-                  label: 'Responsive Design',
-                  description: 'Seamless experience across all devices.',
+                  label: t('home.features.responsive.label'),
+                  description: t('home.features.responsive.description'),
                 },
                 {
                   icon: Palette,
-                  label: 'Advanced Theming',
-                  description: 'Native support for Dark and Light modes.',
+                  label: t('home.features.theming.label'),
+                  description: t('home.features.theming.description'),
                 },
                 {
                   icon: Rocket,
-                  label: 'Optimized Stack',
-                  description: 'Built with Vite, React, and Tailwind CSS.',
+                  label: t('home.features.stack.label'),
+                  description: t('home.features.stack.description'),
                 },
               ].map((item, idx) => (
                 <div
@@ -87,7 +90,7 @@ export const HomePage = () => {
               <LayoutTemplate className="h-5 w-5 text-primary/60 group-hover:text-primary" />
             </div>
             <span className="text-[11px] font-bold text-foreground">
-              Explore Components
+              {t('home.buttons.explore')}
             </span>
           </Button>
           <Button
@@ -98,19 +101,17 @@ export const HomePage = () => {
               <Palette className="h-5 w-5 text-primary/60 group-hover:text-primary" />
             </div>
             <span className="text-[11px] font-bold text-foreground">
-              Global Styles
+              {t('home.buttons.styles')}
             </span>
           </Button>
         </div>
 
         <div className="flex items-start gap-3 p-4 rounded-xl bg-primary/5 border border-primary/10">
           <Info className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-          <p className="text-[11px] text-primary/80 leading-relaxed font-medium">
-            This is a <strong>starter dashboard layout</strong>. Edit{' '}
-            <code>src/pages/HomePage.tsx</code> to build your actual features.
-            The entire UI is built with atomic components, making it easy to
-            scale and customize.
-          </p>
+          <p
+            className="text-[11px] text-primary/80 leading-relaxed font-medium"
+            dangerouslySetInnerHTML={{ __html: t('home.info.text') }}
+          />
         </div>
       </div>
     </PagePlaceholder>

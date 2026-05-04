@@ -4,7 +4,4 @@ export const APP_CONFIG = {
   logoText: 'S',
   logoImage: '/tauri.svg',
   description: 'A professional Tauri v2 starter template',
-  links: {
-    github: 'https://github.com/your-repo',
-  },
 } as const;

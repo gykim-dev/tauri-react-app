@@ -3,9 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { TOPBAR_MENU } from '@/configs/menuConfig';
 import { APP_CONFIG } from '@/configs/appConfig';
+import { useTranslation } from 'react-i18next';
 
 export const TopBar = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <div className="h-full w-full flex items-center justify-between px-4">
@@ -36,7 +38,7 @@ export const TopBar = () => {
           if (item.label === 'Profile') {
             return (
               <Button
-                key={item.label}
+                key={t(item.label)}
                 variant="ghost"
                 className="h-10 w-10 rounded-full p-0 overflow-hidden border border-transparent hover:border-primary/30 transition-all"
                 onClick={handleClick}
@@ -53,7 +55,7 @@ export const TopBar = () => {
 
           return (
             <Button
-              key={item.label}
+              key={t(item.label)}
               variant="ghost"
               size="icon"
               className="h-10 w-10 rounded-full text-muted-foreground hover:text-primary transition-colors"

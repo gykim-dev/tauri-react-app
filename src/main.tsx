@@ -4,6 +4,7 @@ import App from '@/App';
 import { ThemeProvider } from '@/theme/ThemeProvider';
 import { HashRouter } from 'react-router-dom';
 import '@/app.css';
+import '@/i18n';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

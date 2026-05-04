@@ -1,9 +1,10 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { NavButton } from '../NavButton';
 import { cn } from '@/lib/utils';
 import { NAV_MENU } from '@/configs/menuConfig';
 import { APP_CONFIG } from '@/configs/appConfig';
+import { useTranslation } from 'react-i18next';
 
 interface SideBarProps {
   isCollapsed: boolean;
@@ -11,26 +12,42 @@ interface SideBarProps {
 }
 
 export const SideBar = ({ isCollapsed, onToggle }: SideBarProps) => {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col h-full py-4">
-      {/* Logo Section */}
+      {/* Toggle & Logo Section */}
       <div
         className={cn(
-          'flex items-center px-4 mb-8',
-          isCollapsed ? 'justify-center' : 'justify-start',
+          'flex mb-6 transition-all duration-300',
+          isCollapsed
+            ? 'justify-center px-2'
+            : 'flex-row items-center px-4 gap-3',
         )}
       >
-        <div className="w-10 h-10 flex items-center justify-center shrink-0 overflow-hidden">
-          <img
-            src={APP_CONFIG.logoImage}
-            alt={APP_CONFIG.logoText}
-            className="w-full h-full object-contain"
-          />
-        </div>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onToggle}
+          className="h-8 w-8 text-muted-foreground hover:text-foreground shrink-0"
+          aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
+
         {!isCollapsed && (
-          <span className="ml-3 font-bold text-lg tracking-tight truncate text-foreground">
-            {APP_CONFIG.name}
-          </span>
+          <div className="flex items-center overflow-hidden animate-in fade-in duration-300">
+            <div className="w-9 h-9 flex items-center justify-center shrink-0">
+              <img
+                src={APP_CONFIG.logoImage}
+                alt={APP_CONFIG.logoText}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <span className="ml-3 font-bold text-lg tracking-tight truncate text-foreground">
+              {APP_CONFIG.name}
+            </span>
+          </div>
         )}
       </div>
 
@@ -41,33 +58,12 @@ export const SideBar = ({ isCollapsed, onToggle }: SideBarProps) => {
             key={item.to}
             to={item.to}
             icon={<item.icon />}
-            label={isCollapsed ? '' : item.label} // 축소 시 라벨 비움
+            label={isCollapsed ? '' : t(item.label)}
             direction="horizontal"
             className={cn(isCollapsed && 'justify-center px-0')}
           />
         ))}
       </nav>
-
-      {/* Bottom Toggle Button */}
-      <div className="px-2 mt-auto border-t border-border/40 pt-4">
-        <Button
-          variant="ghost"
-          className={cn(
-            'w-full text-muted-foreground hover:text-foreground',
-            isCollapsed ? 'justify-center px-0' : 'justify-start px-4',
-          )}
-          onClick={onToggle}
-        >
-          {isCollapsed ? (
-            <ChevronRight className="h-5 w-5" />
-          ) : (
-            <>
-              <ChevronLeft className="h-5 w-5 mr-3" />
-              <span className="text-sm font-medium">Collapse</span>
-            </>
-          )}
-        </Button>
-      </div>
     </div>
   );
 };
