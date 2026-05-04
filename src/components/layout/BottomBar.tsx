@@ -1,5 +1,5 @@
 import { NAV_MENU } from '@/configs/menuConfig';
-import { NavButton } from '../NavButton';
+import { NavButton } from '@/components/NavButton';
 
 export const BottomBar = () => {
   return (

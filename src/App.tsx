@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { HomePage } from '@/pages/HomePage';
-import { ExamplePage } from './pages/ExamplePage';
+import { ExamplePage } from '@/pages/ExamplePage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { SettingsPage } from '@/pages/SettingsPage';
-import { PATHS } from './configs/menuConfig';
+import { PATHS } from '@/configs/menuConfig';
 
 const App = () => {
   return (

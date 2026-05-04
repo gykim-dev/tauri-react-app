@@ -54,6 +54,7 @@ export const NavButton = ({
           className={cn(
             isVertical ? 'text-[10px] font-medium' : 'text-sm',
             isActive ? 'opacity-100' : 'opacity-80',
+            !label && !isVertical && 'hidden',
           )}
         >
           {label}

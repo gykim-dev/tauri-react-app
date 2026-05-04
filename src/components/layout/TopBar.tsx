@@ -2,18 +2,28 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { TOPBAR_MENU } from '@/configs/menuConfig';
+import { APP_CONFIG } from '@/configs/appConfig';
 
 export const TopBar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="h-14 shrink-0 z-40 flex items-center justify-between px-4 md:px-8">
-      <div className="flex items-center gap-4">
-        <h1 className="text-base font-bold md:text-lg text-primary md:hidden">
-          Starter App
+    <div className="h-full w-full flex items-center justify-between px-4">
+      {/* Logo */}
+      <div className="flex items-center gap-2">
+        <div className="md:hidden w-8 h-8 flex items-center justify-center shrink-0 overflow-hidden">
+          <img
+            src={APP_CONFIG.logoImage}
+            alt={APP_CONFIG.logoText}
+            className="w-full h-full object-contain"
+          />
+        </div>
+        <h1 className="md:hidden text-sm font-bold tracking-tight text-foreground">
+          {APP_CONFIG.name}
         </h1>
       </div>
 
+      {/* Action */}
       <div className="flex items-center gap-2">
         {TOPBAR_MENU.map((item) => {
           const Icon = item.icon;
