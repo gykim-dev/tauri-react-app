@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "tauri-react-app",
+        "title": "Starter App",
         "width": 800,
         "height": 600
       }
